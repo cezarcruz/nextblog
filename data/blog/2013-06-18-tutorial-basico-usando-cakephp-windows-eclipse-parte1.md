@@ -1,0 +1,100 @@
+---
+title: Tutorial básico usando CakePHP, Windows e Eclipse – Parte 1
+author: Cezar Cruz
+date: 2013-06-18T12:33:16+00:00
+url: /tutorial-basico-usando-cakephp-windows-eclipse-parte1/
+categories:
+  - PHP
+  - CakePHP
+tags:
+  - PGP
+  - CakePHP
+---
+
+<img class="alignnone size-full wp-image-42" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457626/cake-logo_ns8tdv.png" alt="cake-logo" width="180" height="180" />
+
+Olá, nesse tutorial gostaria de ensinar de uma forma bem básica, como rodar o Framework CakePHP no Windows e escrever algum código usando o Eclipse.
+
+Bora lá:
+
+O CakePHP é um framework PHP(dãããã) que utiliza MVC, poderia perder bastante tempo falando dos benefícios de usar um Framework e MVC, mas essa não é a intenção do post, de qualquer forma, de uma olhada <a href="http://blog.glaucocustodio.com/2012/07/31/porque-usar-um-framework/" target="_blank">aqui</a> e <a href="http://pt.wikipedia.org/wiki/MVC" target="_blank">aqui</a>.
+
+<!--more-->
+
+O primeiro passo é ter o servidor de aplicação funcionando e para simplificar muito nossa vida, existe o <a href="http://www.wampserver.com/en/" target="_blank">Wamp</a>, que já vem com tudo que precisamos para rodar o CakePHP: Apache, PHP e MySQL.
+
+Depois de instalado o Wamp, que é bem simples, ele irá criar uma pasta em C:wamp, dentro dessa pasta estará a pasta www, que é onde iremos colocar os arquivos que serão acessados pelo navegador. Para verificar se o wamp está funcionando corretamente, basta acessar o link http://localhost, que você irá deparar com a pagina do wamp.
+
+<p style="text-align: center;">
+  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457625/wamp_home_pwpuvr.png"><img class="size-medium wp-image-43 aligncenter" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_198,w_300/v1454457625/wamp_home_pwpuvr.png" alt="wamp_home" width="300" height="197" /></a>
+</p>
+
+O proximo passo é baixar o CakePHP.
+
+O CakePHP você encontra <a href="http://cakephp.org/" target="_blank">aqui</a>, e a documentação você encontra <a href="http://book.cakephp.org/2.0/en/index.html" target="_blank">aqui.</a>
+
+Agora basta baixar o CakePHP e colocar no diretório www do Wamp (C:wampwww), no momento a versão atual é a 2.3.6 e seu diretório do CakePHP irá ficar assim: C:\wamp\www\cakephp-cakephp-b81c198. (Quando abrirmos o CakePHP no Eclipse, falarei um pouco mais da estrutura de diretórios do framework)
+
+Agora, altere o nome da pasta cakephp-cakephp-b81c198 para cake, e acesse via http://localhost/cake e a tela abaixo irá aparecer:
+
+<p style="text-align: center;">
+  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457622/tela_inicial_cake_1_yb2fxm.png"><img class="size-medium wp-image-48 aligncenter" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_163,w_300/v1454457622/tela_inicial_cake_1_yb2fxm.png" alt="tela_inicial_cake_1" width="300" height="162" /></a>
+</p>
+
+Se a tela aparece dessa forma, significa que o module rewrite do apache não está habilitado, no wamp é bem simples fazer isso, vá até o ícone do wamp, que está localizado próximo ao relógio do Windows, clique nele e procure por Apache, teremos a seguinte tela:
+
+<p style="text-align: center;">
+  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457623/wamp_painel_controle_dof4xf.png"><img class="size-medium wp-image-45 aligncenter" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_272,w_300/v1454457623/wamp_painel_controle_dof4xf.png" alt="wamp_painel_controle" width="300" height="272" /></a>
+</p>
+
+Agora, clique em Apache modules e procure por rewrite_module, clique nele e aguarde o wamp reiniciar para que as configurações sejam válidas. (O rewrite_module é utilizado para criar url amigáveis ou personalizadas)
+
+Agora teremos o CakePHP funcionando "quase" que completamente, nossa tela será a seguinte:
+
+<p style="text-align: center;">
+  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457621/tela_inicial_cake_2_efuc7i.png"><img class="size-medium wp-image-49 aligncenter" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_163,w_300/v1454457621/tela_inicial_cake_2_efuc7i.png" alt="tela_inicial_cake_2" width="300" height="162" /></a>
+</p>
+
+Agora vamos ao o que consideraria a segunda parte do tutorial, importar a estrutura de diretórios para o [Eclipse][2], uma IDE feita em Java pela IBM, que é muito utilizada para desenvolvimentos em geral (Java, PHP, Html, JS, etc).
+
+Assumiremos que o Eclipse já esta instalado e configurado para que possamos editar arquivos em PHP. A grande sacada aqui é criarmos um projeto apontando para o diretório do CakePHP, faremos o seguinte:
+
+Com o Eclipse aberto, clicar em File, New, Php Project:
+
+<p style="text-align: center;">
+  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457618/eclipse_novo_projeto_dnn3tv.png"><img class="size-medium wp-image-51 aligncenter" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_300,w_266/v1454457618/eclipse_novo_projeto_dnn3tv.png" alt="eclipse_novo_projeto" width="266" height="300" /></a>
+</p>
+
+1. Nesse textbox, coloque o nome do Projeto, para o tutorial sugiro utilizar cake, com letras minusculas 😉
+2. Aqui você deve selecionar o diretório raiz do cake, no nosso caso, C:\wamp\www\cake
+3. Feito as devidas configurações, clique em Finish.
+
+E agora teremos nosso projeto criado e pronto para começarmos
+
+<p style="text-align: center;">
+  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457614/projeto_cake_eclipse_eqvvvl.png"><img class="size-medium wp-image-52 aligncenter" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_279,w_300/v1454457614/projeto_cake_eclipse_eqvvvl.png" alt="projeto_cake_eclipse" width="300" height="279" /></a>
+</p>
+
+Nossa primeira alteração será para corrigirmos o erros exibidos na pagina inicial do CakePHP, vamos lá.
+
+Abrar o arquivos core.php que fica em Cake->app->Config, e altere o valor do **Security.salt** e do **Security.cipherSeed:**
+
+```php
+Configure::write('Security.salt', 'DYhG93b0qyJfIxfs2guVoUubWwvniR2G0FgaC9mi');
+Configure::write('Security.cipherSeed', '76859309657453542496749683645');
+```
+
+Esses carinhas são utilizados na criptografia do CakePHP e devem ser alterados, para que não utilizem o valor padrão do CakePHP. No Security,salt você pode utilizar qualquer valor que seja número ou letra e no Security.cipherSeed você deve utilizar apenas números. Não esqueça de salvar o arquivos.
+
+Até esse ponto, já corrigimos as duas primeiras mensagens de erros, nosso CakePHP está assim:
+
+<p style="text-align: center;">
+  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457608/cake_php_home_final_e0jyxp.png"><img class="size-medium wp-image-53 aligncenter" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_163,w_300/v1454457608/cake_php_home_final_e0jyxp.png" alt="cake_php_home_final" width="300" height="162" /></a>
+</p>
+
+No próximo post daremos continuidade ao projeto, explicarei como corrigir o erro de banco, explicarei um pouco da estrutura de diretórios do CakePHP e por fim um pouco de código.
+
+Até.
+
+[1]: http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457626/cake-logo_ns8tdv.png
+[2]: http://www.eclipse.org/

@@ -10,5 +10,15 @@ export const getStaticProps = async () => {
 }
 
 export default function About({ author }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return <MDXLayoutRenderer layout={author.layout || DEFAULT_LAYOUT} content={author} />
+  return (
+    <>
+      <MDXLayoutRenderer layout={author.layout || DEFAULT_LAYOUT} content={author} />
+      <p>Olá, seja bem vindo ao meu Blog.</p>
+      <p>
+        Meu nome é Cezar e desenvolvo para Web utilizando Java e Javascript, criei esse blog para
+        compartilhar algumas coisas que vou aprendendo.
+      </p>
+      <p>Então, seja bem vindo e aproveite a viagem.</p>
+    </>
+  )
 }

@@ -1,0 +1,83 @@
+---
+categories: ['Java']
+description: 'Configurando ambiente de desenvolvimento Java rapidamente no Linux'
+tags: ['Java']
+date: '2018-09-19T09:59:51-03:00'
+title: 'Configurando ambiente de desenvolvimento Java rapidamente no Linux'
+url: /configurando-ambiente-java-simples-rapido-no-linux/
+author: Cezar Cruz
+---
+
+Todo mundo já teve que configurar um ambiente de desenvolvimento Java e sofreu, hoje vou mostrar uma forma simples de pratica.
+
+<!--more-->
+
+Para configurar o ambiente de desenvolvimento rapidamente, utilizaremos uma ferramente muito útil o [SDKMAN](https://sdkman.io/).
+
+Para instalar basta rodar o seguinte comando:
+
+```
+curl -s "https://get.sdkman.io" | bash
+```
+
+> Caso falte alguma dependência, o próprio sdk irá mostrar na tela.
+
+Aguarde as configurações, ao término, será solicitado que abra um novo terminal. Isso é solicitado para que seja recarregado as configurações no terminal.
+
+Após abrir um novo terminal, o primeiro comando que podemos utilizar é o help:
+
+```
+sdk help
+```
+
+Este comando irá listar os comando disponíveis do SDKMAN. Com isso confirmamos que a entalação ocorreu com sucesso, o próximo passo é instalar o Java:
+
+```
+sdk install java
+```
+
+O comando acima irá instalar a versão default do Java, no momento é a versão 8.
+Para ver quais são as versões disponíveis, podemos utilizar o comando abaixo:
+
+```
+sdk list java
+```
+
+O resultado é o abaixo:
+
+```
+     12.ea.08-open
+     11.ea.28-open
+     10.0.2-zulu
+ > * 10.0.2-open
+     10.0.2-oracle
+     9.0.7-zulu
+     9.0.4-open
+     8.0.181-zulu
+     8.0.181-oracle
+     7.0.191-zulu
+     6.0.113-zulu
+     1.0.0-rc6-graal
+```
+
+Esta é a lista de todas as versões do Java disponíveis para ser instalada. A com "\*" é a versão instalada e a com ">" é a em uso no momento. Para instalar uma versão diferente, basta utilizar o comando abaixo:
+
+```
+sdk install java 10.0.2-oracle
+```
+
+Com isso, podemos trocar a versão do java sem ter que ficar incluindo configurações em arquivos.
+
+Os comando acima são validos para instalar o Maven, Gradle, Kotlin, Scala, Groovy, etc. Para verificar todas as SDK's disponíveis, acesse: [https://sdkman.io/sdks](https://sdkman.io/sdks)
+
+Exemplos:
+
+```
+sdk install maven
+sdk install gradle
+sdk install scala
+```
+
+Então é isso, qualquer duvida, comenta ai embaixo.
+
+Abraços.

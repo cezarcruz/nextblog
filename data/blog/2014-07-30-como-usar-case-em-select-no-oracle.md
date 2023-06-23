@@ -1,0 +1,52 @@
+---
+title: Como usar Case em select no Oracle
+author: Cezar Cruz
+date: 2014-07-30T19:51:56+00:00
+url: /como-usar-case-em-select-no-oracle/
+categories:
+  - SQL
+  - Oracle
+tags:
+  - SQL
+  - Oracle
+---
+
+Olás,
+
+Hoje uma dica rápida sobre oracle: Como utilizar o **Case** em um select no Oracle.
+
+<!--more-->
+
+O **Case**, basicamente é um "if/else", por exemplo, se um condição for for verdadeira ele faz determinada ação.
+
+A utilização do Case é bem simples, veja abaixo:
+
+```sql
+SELECT
+     CASE nome_coluna
+     WHEN 'valor_ocorrer' THEN 'substitui_por_isso'
+     ELSE 'valor_padrão'
+     END
+FROM tabela;
+```
+
+Explicando:
+
+**CASE** o nome da coluna WHEN o valor que irá retornar THEN substitui por esse valor ELSE não encontre o valor na cláusula, usa este como default END.
+
+Também é possível utilizar mais de uma cláusula, bastando apenas acrescentar elas da seguinte forma:
+
+```sql
+SELECT
+     CASE nome_coluna
+     WHEN 'valor_ocorrer' THEN 'substitui_por_isso'
+     WHEN 'valor2_ocorrer' THEN 'substitui_por_isso'
+     WHEN 'valor3_ocorrer' THEN 'substitui_por_isso'
+     ELSE valor_padrão
+     END
+FROM tabela;
+```
+
+Simples, porem muuuuuuito útil.
+
+É isso ae, use com moderação, boa sorte e até!!
