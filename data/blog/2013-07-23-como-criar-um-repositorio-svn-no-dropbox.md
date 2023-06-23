@@ -1,0 +1,52 @@
+---
+title: 'Como criar um repositório SVN no Dropbox [deprecated]'
+author: Cezar Cruz
+date: 2013-07-23T14:59:18+00:00
+url: /como-criar-um-repositorio-svn-no-dropbox/
+categories:
+  - SVN
+tags:
+  - SVN
+---
+
+Um requisito básico para programar, talvez até antes de uma IDE, é uma forma de armazenar os códigos com segurança e se for com controle de versão, melhor ainda.
+
+<!--more-->
+
+Iremos precisar de uma conta ativa no Dropbox junto com o software de sincronia, que deve ser adquirido aqui: <a href="https://www.dropbox.com/downloading?os=win" target="_blank">https://www.dropbox.com/downloading?os=win</a>
+
+Iremos precisar to Tortoise SVN, esse é ferramenta muito útil no dia a dia, é com ela que iremos criar nosso repositório e faremos updates e commits, ela deve ser obtida aqui: <a href="http://tortoisesvn.net/downloads.html" target="_blank">http://tortoisesvn.net/downloads.html</a>
+
+A instalação de ambos é bem simples, então iremos direto pra parte de criar o repositório:
+
+> Não esqueça de reiniciar o PC após a instalação do Tortoise SVN
+
+No Windows 7 e Windows 8 o software do Dropbox cria uma pasta no diretório do usuário, por exemplo:
+
+C:\Users\usuário\Dropbox
+
+Nesse diretório que iremos criar nosso, repositório:
+
+Primeiro crie uma pasta com um nome qualquer, por exemplo "Repositório", sem aspas 😉
+
+Dentro dela, clique com o botão direito do mouse, escolha a opção _TortoiseSVN_ e em seguida _Create respository here_
+
+<p style="text-align: center;">
+  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457592/criando_rep_svn_yctbqr.png"><img class="size-medium wp-image-104 aligncenter" alt="criando_rep_svn" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_171,w_300/v1454457592/criando_rep_svn_yctbqr.png" width="300" height="171" /></a>
+</p>
+
+O TortoiseSVN irá criar a estrutura de diretórios abaixo
+
+<p style="text-align: center;">
+  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457591/resultado_ou0gwv.png"><img class="size-medium wp-image-105 aligncenter" alt="resultado" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_193,w_300/v1454457591/resultado_ou0gwv.png" width="300" height="192" /></a>
+</p>
+
+Clique na opção Create folder structure, para criar as pastas trunk, tags, branch...
+
+Repare que na figura temos um caminho selecionado, começando com file:///C:.... e é nesse endereço que está o pulo do gato, quando for abrir o repo browser ou for fazer um chekout/commit, basta acrescentar o caminho dessa forma
+
+<p style="text-align: center;">
+  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457589/abrindo_repo_br_pu6exf.png"><img class="size-medium wp-image-108 aligncenter" alt="abrindo_repo_br" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_103,w_300/v1454457589/abrindo_repo_br_pu6exf.png" width="300" height="103" /></a>
+</p>
+
+Assim, teremos, de uma forma gratuita, um repositório SVN que pode ser acessado de qualquer lugar, lembrando sempre de sincronizar a pasta com o repositório.

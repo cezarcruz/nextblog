@@ -1,0 +1,137 @@
+---
+title: 'Incluindo Lombok em sua aplicação Java'
+categories: ['Java']
+date: 2019-07-25T11:20:28-03:00
+author: Cezar Cruz
+url: /post/incluindo-lombok-na-sua-aplicacao-java/
+---
+
+Olá, no post de hoje, vamos ver como incluir o lombok na nossa aplicação Java.
+
+<!--more-->
+
+Primeiro, o que é o Lombok?
+
+Site do projeto: https://projectlombok.org/
+
+Basicamente o Lombok é um projeto que diminui a necessidade de ficar implementando um monte de código java que criamos em nossas classes. Ex: métodos get e set, builders, construtores, toString, hascode, etc. Com o lombok, basta anotarmos nossas classe com algumas anotações, que em tempo de compilação, o lombok gera todos esses métodos automaticamente, o que deixa nossa classe muito mais simples.
+
+Classe sem anotações lombok (e nem consideramos o builder):
+
+```java
+import java.util.Objects;
+
+public class Pessoa {
+
+    private String nome;
+    private Integer idade;
+
+    public Pessoa() {
+    }
+
+    public Pessoa(String nome, Integer idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Integer getIdade() {
+        return idade;
+    }
+
+    public void setIdade(Integer idade) {
+        this.idade = idade;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pessoa pessoa = (Pessoa) o;
+        return Objects.equals(nome, pessoa.nome) &&
+                Objects.equals(idade, pessoa.idade);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, idade);
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "nome='" + nome + '\'' +
+                ", idade=" + idade +
+                '}';
+    }
+}
+```
+
+Classe com anotações lombok:
+
+```java
+import lombok.Value;
+
+@Value
+public class PessoaLombok {
+
+    private String nome;
+    private Integer idade;
+
+}
+```
+
+A anotação [@Value](https://projectlombok.org/features/Value) gera vários códigos:
+toString(), equal(), hashCode(), construtor com todos as propriedades, métodos getter. Obs: O @Value gera classes imutáveis, dessa forma não é possível utilizar os famosos métodos Setters, para criar classes mutáveis, deve ser utilizada a anotação [@Data](https://projectlombok.org/features/Data).
+
+## Incluindo no nosso projeto.
+
+Como nem tudo são flores, o primeiro passo é incluir o plugin do lombok em nossa IDE, esse passo é importante, pois dessa forma a IDE consegue entender os métodos gerados:
+
+[Eclipse](https://projectlombok.org/setup/eclipse)
+
+[Intellij](https://projectlombok.org/setup/intellij)
+
+O próximo passo é incluir a dependência no nosso pom.xml:
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.8</version>
+        <scope>provided</scope>
+    </dependency>
+</dependencies>
+```
+
+Pronto, o lombok está configurado no nosso projeto, abaixo segue as anotações mais utilizadas comumente:
+
+[@Getter e @Setter](https://projectlombok.org/features/GetterSetter): Como o nome sugere, gera os getters e setters de uma classe, pode ser utilizados sozinhos ou juntos, em classes ou em atributos;
+
+[@NoArgsConstructor e @AllArgsConstructor](https://projectlombok.org/features/constructor): Como o nome sugere, gera métodos construtores;
+
+[@Builder](https://projectlombok.org/features/Builder): Implementa o padrão de projetos "Builder", basicamente, gera uma classe e um método que torna possível criar uma nova instância da classe anotada. É muito útil na criação de classes imutáveis;
+
+[@Data](https://projectlombok.org/features/Data): Muito parecido com a anotação @Value, no entanto, gera classes mutáveis, bastante útil em classes do tipo DTO;
+
+[@Value](https://projectlombok.org/features/Value): Como descrito acima, gera classes imutáveis e outros métodos comuns no dia a dia (equals, hashCode, toString);
+
+Existem varias outras funcionalidades do lombok que podem ser encontradas aqui:
+https://projectlombok.org/features/all
+
+Os exemplos utilizados nesse post pode ser encontrados aqui:
+https://github.com/cezarcruz/codigos-do-site/tree/master/exemplos-lombok
+
+Não tenha medo de utilizar o lombok, existem ferramentas capaz de remover o código lombok e gerar as classes como antigamente, mas incluído o lombok no projeto e visto os benefícios, acho dificil voltar.
+
+Qualquer duvida, deixe uma mensagem no chat abaixo.
+Abraços.

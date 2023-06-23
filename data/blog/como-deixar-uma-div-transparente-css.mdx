@@ -1,0 +1,34 @@
+---
+title: 'Como deixar uma div transparente (CSS)'
+date: '2013-06-13'
+tags: ['css']
+draft: false
+summary: 'Com a versão mais recente do Junit ficou muito simples de fazer testes "parametrizados", onde, com apenas um método, é possível fazer testes em vários cenários.'
+---
+
+Olás,
+
+aqui não é bem um tutorial, está mais para uma dica:
+
+Se você quer deixar sua div transparente, você pode utilizar isso, por exemplo, pra deixar a imagem de background visível, deve ser inserido no seu css a seguinte regra:
+
+```css
+.transparente {
+  background: rgb(0, 0, 0) transparent;
+  background: rgba(0, 0, 0, 0.7);
+  /* Para navegadores IE 5.5 - 7 */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#000000, endColorstr=#000000);
+  /* Para navegadores IE 8 */
+  -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#000000, endColorstr=#000000)';
+}
+```
+
+lembrando que quando o nome da regra começa com **.** (ponto), ela deve ser utilizada como class:
+
+```html
+<div class="transparente"></div>
+```
+
+E caso queira alterar a cor do bloco transparente basta alterar as regras rgb e rgba.
+
+É isso ai, até a próxima.
