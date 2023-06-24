@@ -1,19 +1,13 @@
 ---
 title: Criando um controller com Angular.JS utilizando padrões
-author: Cezar Cruz
+draft: false
 date: 2015-04-28T02:55:37+00:00
-url: /criando-um-controller-com-angular-js-utilizando-padroes/
-categories:
-  - JavaScript
-  - AngularJS
 tags:
   - JavaScript
   - AngularJS
 ---
 
 Ol<span class="st">ás</span>, hoje vamos ver como criar um Controller no Angular.JS utilizando [styleguide][1] criado pelo John Papa.
-
-<!--more-->
 
 Vamos l<span class="st">á</span>, o primeiro passo é iniciarmos o arquivo utilizando o Immediately Invoked Function Expression (IIFE), ele garante que as variáveis fique apenas no escopo utilizado cuidando para que não aconteça colisões de variáveis. Para isso colocamos o código abaixo:
 
@@ -44,7 +38,7 @@ Na única linha acima, setamos o controller SeriadosCtrl no angular module com a
 })()
 ```
 
-Nas linhas acima temos o complemento da criação de um controller e ainda utilizamos a injeção de dependências no controller, pra isso utilizamos o <function_name>.$inject = <dependências>, lembrando que a ordem das dependências e a assinatura da function (SeriadosCtrl) devem ser as mesmas.
+Nas linhas acima temos o complemento da criação de um controller e ainda utilizamos a injeção de dependências no controller, pra isso utilizamos o \<function_name>.$inject = \<dependências>, lembrando que a ordem das dependências e a assinatura da function (SeriadosCtrl) devem ser as mesmas.
 
 Não sei dizer quanto a desempenho, mas quanto a legibilidade de código, fica muito melhor utilizando o styleguide.
 
