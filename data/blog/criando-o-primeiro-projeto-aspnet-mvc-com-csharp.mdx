@@ -1,11 +1,6 @@
 ---
 title: Criando o primeiro projeto ASPNET MVC com CSharp
-author: Cezar Cruz
 date: 2013-09-02T12:31:21+00:00
-url: /criando-o-primeiro-projeto-aspnet-mvc-com-csharp/
-categories:
-  - NET
-  - CSharp
 tags:
   - NET
   - CSharp
@@ -17,8 +12,6 @@ nesse post vou mostrar como criar a nossa primeira página ASP.NET MVC.
 
 Não vou entrar em detalhes da tecnologia, mas pelo pouco que estou aprendendo, acredito ser uma boa área de estudo, quem vem do Web Forms vai sentir um pouco de dificuldade, mas rapidinho pega o jeito, vamos lá:
 
-<!--more-->
-
 **Requisitos**
 
 Nesse tutorial vamos utilizar o [Visual Studio 2012 Express for Web][1]
@@ -28,7 +21,13 @@ Nesse tutorial vamos utilizar o [Visual Studio 2012 Express for Web][1]
 Nosso primeiro passo é criar um novo projeto no VS(Visual Studio), clique em File -> New Project
 
 <p style="text-align: center;">
-  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457585/tela_new_project_vs2012_MVC_nikiyo.png"><img class=" wp-image-172   aligncenter" alt="tela_new_project_vs2012_MVC" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457585/tela_new_project_vs2012_MVC_nikiyo.png" /></a>
+  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457585/tela_new_project_vs2012_MVC_nikiyo.png">
+    <img
+      class=" wp-image-172   aligncenter"
+      alt="tela_new_project_vs2012_MVC"
+      src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457585/tela_new_project_vs2012_MVC_nikiyo.png"
+    />
+  </a>
 </p>
 
 Na tela New Project iremos escolher a linguagem (Csharp ou VB.NET) qual é o tipo de projeto, a localização e o nome dele:
@@ -36,7 +35,13 @@ Na tela New Project iremos escolher a linguagem (Csharp ou VB.NET) qual é o tip
 Pra esse tutorial iremos utilizar a linguagem CSharp, o tipo de projeto é ASP.NET MVC 4 Web Aplication, o nome, iremos colocar **SiteMVC**, clicamos em OK.
 
 <p style="text-align: center;">
-  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457584/tela_new_aspnet_mvc_project_euqv1f.png"><img class=" wp-image-173  aligncenter" alt="Tela new MVC project" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457584/tela_new_aspnet_mvc_project_euqv1f.png" /></a>
+  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457584/tela_new_aspnet_mvc_project_euqv1f.png">
+    <img
+      class=" wp-image-173  aligncenter"
+      alt="Tela new MVC project"
+      src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457584/tela_new_aspnet_mvc_project_euqv1f.png"
+    />
+  </a>
 </p>
 
 Nessa tela iremos escolher os tipos de projetos, no nosso caso iremos utilizar o template **_Empty_** (Os outros templates já vem com algumas funcionalidades, recomendo dar uma olhada, pra entender um pouco mais como funciona a estrutura do ASP.NET MVC), o View engine podemos deixar Razor mesmo ([mais informações sobre o Razor aqui][2] _\*\*\*\*_). Após as escolhas, clicar em OK.
@@ -44,7 +49,13 @@ Nessa tela iremos escolher os tipos de projetos, no nosso caso iremos utilizar o
 Após nosso projeto ser criado, teremos a seguinte estrutura:
 
 <p style="text-align: center;">
-  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457582/projeto_site_mvc_vs2012_qwbyct.png"><img class=" wp-image-174  aligncenter" alt="Estrutura projeto MVC" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457582/projeto_site_mvc_vs2012_qwbyct.png" /></a>
+  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457582/projeto_site_mvc_vs2012_qwbyct.png">
+    <img
+      class=" wp-image-174  aligncenter"
+      alt="Estrutura projeto MVC"
+      src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457582/projeto_site_mvc_vs2012_qwbyct.png"
+    />
+  </a>
 </p>
 
 Pra esse tutorial devemos destacar os seguintes diretórios
@@ -61,7 +72,13 @@ Com a estrutura criada, vamos escrever códigos. Primeiro, vamos criar um Contro
 
 No nosso exemplo ficará SiteController, na tela AddController coloque o Controller name SiteController e no Scaffolding options selecione Empty MVC controller, clique em add:
 
-<img class="size-medium wp-image-175  " alt="tela_add_controller" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_195,w_300/v1454457581/tela_add_controller_mrsuxs.png" width="300" height="195" />
+<img
+  class="size-medium wp-image-175  "
+  alt="tela_add_controller"
+  src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_195,w_300/v1454457581/tela_add_controller_mrsuxs.png"
+  width="300"
+  height="195"
+/>
 
 Nossa classe SiteController irá estar assim:
 
@@ -92,7 +109,13 @@ Note que nossa classe herda da classe Controller (OO aqui =P), e que já é cria
 
 Agora vamos criar a view /Site/Index, pra fazermos isso, devemos criar uma pasta chamada Site(com S maiúsculo) dentro da pasta Views. Depois de criado a pasta Site vamos criar a View Index, botão direito do mouse em cima da pasta Site, Add -> View. Na tela Add View, colocamos o View name de Index, View engine deixamos Razor mesmo, de resto deixamos como está, clicar em Add.
 
-<img class="size-medium wp-image-176 " alt="Tela Add view" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_295,w_300/v1454457580/tela_add_view_gusagk.png" width="300" height="295" />
+<img
+  class="size-medium wp-image-176 "
+  alt="Tela Add view"
+  src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_295,w_300/v1454457580/tela_add_view_gusagk.png"
+  width="300"
+  height="295"
+/>
 
 Agora foi criado a view Index.cshtml dentro da pasta Site, que ficou assim:
 
@@ -136,7 +159,13 @@ public static void RegisterRoutes(RouteCollection routes)
 
 Essa classe define as rotas do MVC, e o parâmetro defaults é o controller que deve ser chamado quando não é passado nenhum link na url. No nosso caso, usaremos o controller Site, e o action Index, para que a primeira pagina a ser processada será o Index.cshmtl, o resultado está a baixo:
 
-<img class="size-medium wp-image-179 " alt="Página index.cshtml" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_196,w_300/v1454457578/index_cshtml_t8wqep.png" width="300" height="196" />
+<img
+  class="size-medium wp-image-179 "
+  alt="Página index.cshtml"
+  src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_196,w_300/v1454457578/index_cshtml_t8wqep.png"
+  width="300"
+  height="196"
+/>
 
 O código html gerado fica assim:
 
@@ -183,7 +212,13 @@ Depois de definido o valor da variável, devemos colocar ela no arquivo Index.cs
 
 Executamos novamente o nosso projeto, e teremos o resultado abaixo:
 
-<img class="size-medium wp-image-181 " alt="Index.cshtml com ViewBag" src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_196,w_300/v1454457577/index_cshtml_final1_xgty2c.png" width="300" height="196" />
+<img
+  class="size-medium wp-image-181 "
+  alt="Index.cshtml com ViewBag"
+  src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_196,w_300/v1454457577/index_cshtml_final1_xgty2c.png"
+  width="300"
+  height="196"
+/>
 
 E o código gerado:
 
