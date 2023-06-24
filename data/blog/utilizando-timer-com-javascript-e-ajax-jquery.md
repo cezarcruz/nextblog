@@ -1,10 +1,6 @@
 ---
 title: Utilizando timer com JavaScript e AJAX JQuery
-author: Cezar Cruz
 date: 2014-05-09T12:17:40+00:00
-url: /utilizando-timer-com-javascript-e-ajax-jquery/
-categories:
-  - JavaScript
 tags:
   - JavaScript
 ---
