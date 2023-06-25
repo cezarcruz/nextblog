@@ -3,6 +3,7 @@ title: Como instalar Apache + PHP + MySQL no Ubuntu
 date: 2013-07-02T15:54:23+00:00
 tags:
   - LAMP
+draft: false
 ---
 
 Olás, nesse tutorial veremos como instalar e configurar o Ubuntu para rodar nossos sites em PHP.
@@ -13,19 +14,11 @@ Aqui uma grande surpresa minha, é muito mais fácil instalar e rodar o PHP no L
 
 Esse comando irá instalar o apache, lembrando que o computador deve estar conectado na internet. Para verificar se o apache foi instalado corretamente, basta acessarmos http://localhost, e verificar se essa tela aparece:
 
-<p style="text-align: center;">
-  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457596/Apache_funcionando_srvzvh.png">
-    <img
-      class="size-medium wp-image-86 aligncenter"
-      alt="Apache_funcionando"
-      src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_198,w_300/v1454457596/Apache_funcionando_srvzvh.png"
-      width="300"
-      height="197"
-    />
-  </a>
-  Nessa altura já podemos publicar páginas HTML estáticas no diretório <strong>/var/www</strong> que
-  elas estarão disponíveis para acesso.
-</p>
+![Apache funcionando](http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457596/Apache_funcionando_srvzvh.png "Apache funcionando")
+
+
+Nessa altura já podemos publicar páginas HTML estáticas no diretório <strong>/var/www</strong> que elas estarão disponíveis para acesso.
+
 
 > Não esqueça de dar permissão de escrita na pastar /var/www para o seu usuário, da seguinte forma:
 >
@@ -47,17 +40,7 @@ Para verificarmos se a instalação do PHP ocorreu tudo bem, criaremos um arquiv
 
 O resultado deve ser igual a figura a seguir
 
-<p style="text-align: center;">
-  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457595/instalacao_ok_php_e6m45l.png">
-    <img
-      class="size-medium wp-image-87 aligncenter"
-      alt="instalacao_ok_php"
-      src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_198,w_300/v1454457595/instalacao_ok_php_e6m45l.png"
-      width="300"
-      height="197"
-    />
-  </a>
-</p>
+![Instalação OK](http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457595/instalacao_ok_php_e6m45l.png "Instalação OK")
 
 Pronto, já temos o Apache e o PHP funcionando, agora o próximo passo é instalar o MySQL, tão simples quanto os anteriores, basta rodar o comando a seguir no Terminal:
 
@@ -69,17 +52,7 @@ A instalação do MySQL exige uma pequena interação para criarmos a senha do u
 
 Para verificarmos se o MySQL foi instalado corretamente, basta acessar o nosso arquivo info.php, http://localhost/info.php, e procurarmos por MySQL
 
-<p style="text-align: center;">
-  <a href="http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457593/instalacao_mysql_ok_j00hp4.png">
-    <img
-      class="size-medium wp-image-89 aligncenter"
-      alt="instalacao_mysql_ok"
-      src="http://res.cloudinary.com/cezarcruz-com-br/image/upload/h_208,w_300/v1454457593/instalacao_mysql_ok_j00hp4.png"
-      width="300"
-      height="207"
-    />
-  </a>
-</p>
+![Instalação MySQL OK](http://res.cloudinary.com/cezarcruz-com-br/image/upload/v1454457593/instalacao_mysql_ok_j00hp4.png "MySQL")
 
 Pronto, agora temos instalado nosso ambiente PHP x Linux com apenas 3 linhas de comando, muito fácil.
 
