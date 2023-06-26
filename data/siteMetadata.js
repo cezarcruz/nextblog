@@ -6,7 +6,7 @@ const siteMetadata = {
   language: 'pt-BR',
   theme: 'system', // system, dark or light
   siteUrl: 'https://cezarcruz.com.br',
-  siteRepo: 'https://github.com/cezarcruz/nextblog/',
+  siteRepo: 'https://github.com/cezarcruz/nextblog',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
