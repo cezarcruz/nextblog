@@ -5,7 +5,7 @@ const siteMetadata = {
   description: 'Meu bloco de notas',
   language: 'pt-BR',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
+  siteUrl: 'https://cezarcruz.com.br',
   siteRepo: 'https://github.com/cezarcruz/nextblog/',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
