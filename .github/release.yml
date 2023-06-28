@@ -11,6 +11,9 @@ changelog:
       labels:
         - Semver-Minor
         - enhancement
+    - title: New Content YeY
+      labels:
+        - post
     - title: Other Changes
       labels:
         - "*"
