@@ -50,6 +50,7 @@ const CommonSEO = ({
         rel="canonical"
         href={canonicalUrl ? canonicalUrl : `${siteMetadata.siteUrl}${router.asPath}`}
       />
+      <meta name="google-site-verification" content="P6NeAS00fSfvFWx5QxNI1G16fR9eWzp1HCKOtbJuB98" />
     </Head>
   )
 }
