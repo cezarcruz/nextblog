@@ -26,6 +26,15 @@ const CommonSEO = ({
   canonicalUrl,
 }: CommonSEOProps) => {
   const router = useRouter()
+
+  const getCanonicalUrl = () => {
+    const asPath = router.asPath
+    const cleanPath = asPath.split('#')[0].split('?')[0]
+    const canonicalUrl = `${siteMetadata.siteUrl}` + (router.asPath === '/' ? '' : cleanPath)
+
+    return canonicalUrl
+  }
+
   return (
     <Head>
       <title>{title}</title>
@@ -46,10 +55,7 @@ const CommonSEO = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={twImage} />
-      <link
-        rel="canonical"
-        href={canonicalUrl ? canonicalUrl : `${siteMetadata.siteUrl}${router.asPath}`}
-      />
+      <link rel="canonical" href={canonicalUrl ? canonicalUrl : getCanonicalUrl()} />
       <meta name="google-site-verification" content="P6NeAS00fSfvFWx5QxNI1G16fR9eWzp1HCKOtbJuB98" />
     </Head>
   )
