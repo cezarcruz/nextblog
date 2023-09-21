@@ -1,0 +1,32 @@
+---
+tags: ['Java', 'Intellij']
+date: 2018-01-07T09:59:51-03:00
+title: 'Como exportar um arquivo .jar utilizando intellij'
+draft: false
+---
+
+Neste post, veremos como é simples, mas não tão intuitivo, exportar um arquivo jar de um projeto java utilizando o Intellij.
+
+O primeiro passo é termos um projeto criado e aberto no intellij. Em seguida, ir no menu _File -> Project Structure_
+
+[![Project Structure](https://res.cloudinary.com/cezarcruz-com-br/image/upload/v1515348274/project-structure_exlwia.png)](https://res.cloudinary.com/cezarcruz-com-br/image/upload/v1515348274/project-structure_exlwia.png)
+
+Selecione a opção Artifacts, clique no _+ (mais) -> Jar -> From modules with dependencies_
+
+[![Create jar from module](https://res.cloudinary.com/cezarcruz-com-br/image/upload/v1515348901/create-jar-from-module_losxnf.png)](https://res.cloudinary.com/cezarcruz-com-br/image/upload/v1515348901/create-jar-from-module_losxnf.png)
+
+Na opção _Main Class_, aponte para a classe "Main" do seu projeto, feito isso, sua configuração deve ficar assim
+
+[![Resultado] (https://res.cloudinary.com/cezarcruz-com-br/image/upload/v1515349212/jar-configurado_ycz8yn.png)](https://res.cloudinary.com/cezarcruz-com-br/image/upload/v1515349212/jar-configurado_ycz8yn.png)
+
+Para gerar o jar, _Build -> Build Artifacts_, selecionar o seu jar e a opção build.
+
+O arquivo será gerado na pasta _out/artifacts/\<nome do seu projeto>_.
+
+Para executar, o velho comando de sempre
+
+```
+java -jar <nome do seu projeto>
+```
+
+=)

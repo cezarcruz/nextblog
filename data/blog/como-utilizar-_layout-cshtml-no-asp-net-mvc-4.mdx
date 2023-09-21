@@ -1,0 +1,140 @@
+---
+title: Como utilizar _Layout.cshtml no ASP.NET MVC 4
+date: 2013-09-13T12:37:24+00:00
+tags:
+  - NET
+draft: false
+---
+
+Nesse tutorial vamos aprender como utilizar o arquivo de \_Layout.cshtml no nosso <a href="/criando-o-primeiro-projeto-aspnet-mvc-com-csharp/" target="_blank">primeiro projeto MVC 4</a>.
+
+Assim como no Web Forms com seu Master Page, o MVC tem o seu arquivo master também, porém ele é chamado de \_Layout.cshtml, nele colocamos nosso layout padrão de páginas.
+
+> Quando uma View começa com \_ (underline) significa que ela não estará navegável, ou seja, não será possível acessar seu conteúdo através de requisições do browser.
+
+Para começarmos a utilizar um layout padrão nas nossas páginas devemos criar dois arquivos cshtml:
+
+- \_ViewStart.cshtml: na raiz da pasta View do projeto;
+- \_Layout.cshtml: dentro da pasta Shared que por sua vez está dentro da pasta View;
+
+O arquivo \_ViewStart.cshtml contem apenas uma referencia para nosso layout, pois ele sera processado antes de chamar a View, podemos incluir lógica nesse arquivo, por exemplo, pra carregar um layout pra mobile quando vier uma requisição de um navegador mobile. O arquivo deve ficar assim:
+
+```vb
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+```
+
+O arquivo \_Layout.cshtml é onde iremos colocar nosso Layout padrão.
+
+E não podemos esquecer do diretório onde colocamos as folhas de estilo, basta criar, na raiz do projeto, uma pasta chamada Content, crie também um arquivo chamado Site.css, pode deixar em branco, voltaremos nele mais tarde.
+
+Pra criamos um layout dinâmico, o primeiro passo é modelar ele estático, depois colocamos as funções dinâmicas. Vamos definir nosso layout utilizando Html:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Titulo</title>
+  </head>
+  <body>
+    <!-- Cabeçalho, menu, -->
+    <header></header>
+    <!-- Conteudo vai aqui -->
+
+    <!-- Rodapé -->
+    <footer>© 2013</footer>
+  </body>
+</html>
+```
+
+Está ai a definição do nosso layout (^^), claro que isso é apenas para fins de tutorial, agora que temos nosso layout definido, hora de deixar ele um pouco mais "esperto":
+
+No tag head, trocamos os dados por esse:
+
+```vb
+<meta charset="utf-8" />
+<title>@ViewBag.Title</title>
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+```
+
+A linha 2 é a variavel com o titulo da View que está sendo carregado, o valor dessa variável pode ser definida tanto no controller como na própria View;
+
+A linha 3 é o link para o css que iremos utilizar aqui.
+
+Agora definimos nosso rodapé:
+
+```html
+<footer>© @DateTime.Now.Year</footer>
+```
+
+Bem simples, o único processamento do servidor será pra exibir o ano corrente.
+
+E agora o mais importante, onde queremos que nossa View apareça no layout:
+
+```html
+<div id="main">@RenderBody()</div>
+```
+
+Para que o conteúdo das Views apareçam no Layout, devemos colocar @RenderBody(). O @RenderBody() sem duvidas é a parte mais importante do layout, sem ele não teremos dados das Views no nosso layout.
+
+O resultado final do \_Layout.cshtml ficou assim:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header></header>
+    <div id="main">@RenderBody()</div>
+    <footer>© @DateTime.Now.Year</footer>
+  </body>
+</html>
+```
+
+E agora, quando criarmos uma View, ela automaticamente virá com o código do layout. Pra exibirmos o titulo, podemos fazer de duas formas, usando o controller:
+
+```csharp
+public ActionResult Index()
+{
+     ViewBag.Title = "Titulo da página";
+     return View();
+}
+```
+
+Ou podemos colocar na própria View, pra isso colocamos o código na primeira linha do arquivo, ficando assim:
+
+```csharp
+@{
+    ViewBag.Title = "Titulo da página";
+}
+```
+
+O ultimo arquivo a ser renderizado é o [View].cshtml, ou seja, se definirmos o ViewBag.Title na View e no controller, o valor utilizado será o da View. No final, o HTML gerado será o seguinte:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <title>Titulo da página</title>
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header></header>
+    <div id="main"></div>
+
+    <footer>© 2013</footer>
+  </body>
+</html>
+```
+
+Limpo e bonito.
+
+Existe outras formas de utilizar layout padrão no MVC 4, mas isso é assunto para outro post.
+
+Até mais!

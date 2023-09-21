@@ -1,0 +1,292 @@
+---
+title: 'Incluindo MapStruct em sua aplicação Java'
+tags: ['Java', 'Mapstruct']
+date: 2020-01-11
+draft: false
+images: ['/static/images/og/header_java_og.png']
+summary: 'Olá, neste post veremos como incluindo o MapStruct em uma aplicação Java.'
+---
+
+Olá, neste post veremos como incluindo o MapStruct em uma aplicação Java.
+
+Qual é o problema?
+
+Nas aplicações atuais estamos acostumados a criar "camadas": _controllers, services, repositories, DAO_, etc. Normalmente, separamos nossa request de dados do que é salvo no banco, com isso temos o famoso DTO e nossas Entidades (JPA). O DTO fica no controller e as entidades são gerenciadas pelo repositório ou DAO, para que isso funcione, temos que converter o DTO antes de salvar no nosso banco de dados, para isso existem algumas formas de fazer, mas todas são massantes.
+
+O que é o MapStruct e como ele pode resolver este problema?
+
+O MapStruct, é suas palavras, é um gerador de código que converte "Java Beans" baseado em convenção sob configuração.
+
+https://mapstruct.org/
+
+Dito isso, podemos utilizar o MapStruct para fazer conversões entre um DTO e uma entidade e vice versa, vamos aos passos:
+
+## Incluir no projeto maven
+
+Deve ser incluído as seguintes linhas no pom.xml
+
+```xml
+   <dependency>
+       <groupId>org.mapstruct</groupId>
+       <artifactId>mapstruct</artifactId>
+       <version>1.3.1.Final</version>
+   </dependency>
+
+   <build>
+       <plugins>
+           <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-compiler-plugin</artifactId>
+               <version>3.5.1</version> <!-- or newer version -->
+               <configuration>
+                   <source>1.8</source> <!-- depending on your project -->
+                   <target>1.8</target> <!-- depending on your project -->
+                   <annotationProcessorPaths>
+                       <path>
+                           <groupId>org.mapstruct</groupId>
+                           <artifactId>mapstruct-processor</artifactId>
+                           <version>${org.mapstruct.version}</version>
+                       </path>
+                       <!-- other annotation processors -->
+                   </annotationProcessorPaths>
+               </configuration>
+           </plugin>
+       </plugins>
+   </build>
+```
+
+Após esta configuração é possível utilizar normalmente.
+
+> O MapStruct gera código através de processamento de anotações, por isso, sempre que houver uma alteração em classes que envolvam o MapStruct (mappers, dto, entidade, etc), deve ser executado um comando de build do maven
+
+## Criando DTOs
+
+Para simplificar o nosso código, não irei exibir os getters e setters.
+Nossa aplicação será composta de 4 POJOs, onde será feita a conversão de um para o outro, veja:
+
+PessoaRequest.java
+
+```java
+private String nome;
+private Integer idade;
+private List<EnderecoRequest> enderecos;
+```
+
+EnderecoRequest.java
+
+```java
+private String rua;
+private Integer numero;
+private String cidade;
+```
+
+PessoaResponse.class
+
+```java
+private String nome;
+private Integer idade;
+private List<EnderecoResponse> enderecos
+```
+
+EnderecoResponse.class
+
+```java
+private String logradouro;
+private String numero;
+private String cidade;
+```
+
+Repare que as classes de endereço tem propriedades com nomes e tipos diferentes propositalmente.
+
+## Implementar os mappers
+
+Agora que temos nossa aplicação configurada e nossos POJOs, podemos iniciar a implementação.
+Ela pode ser feita de duas formas: Implementando em uma Interface ou uma classe Abstrata.
+
+> Normalmente devemos utilizar Interfaces e, caso precise de algum método extra, criamos um método "default", em casos mais específicos (injetar um bean do Spring, por exemplo), podemos utilizar classes abstratas.
+
+Iremos começar pela classe Endereço:
+
+EnderecoMapper.java
+
+```java
+@Mapper(componentModel = "spring")
+public interface EnderecoMapper {
+
+ @Mapping(target = "logradouro", source = "rua")
+ EnderecoResponse de(final EnderecoRequest enderecoRequest);
+
+ @InheritInverseConfiguration
+ EnderecoRequest de(final EnderecoResponse enderecoResponse);
+
+ List<EnderecoResponse> deRequest(final List<EnderecoRequest> enderecoRequests);
+  List<EnderecoRequest> deResponse(final List<EnderecoResponse> enderecoResponses);
+}
+```
+
+**@Mapper** é utilizado para dizermos que esta interface é um mapper, a opção "componentModel" foi utilizada para dizer ao MapStruct que deve ser criar um "Bean" do spring para que possamos utilizar a Injeção de Dependencia do Spring. A configuração "componentModel" é opcional
+
+**@Mapping** é utilizado para deixar explícito a conversão. Quando o nome das propriedades estão iguais o próprio MapStruct infere, mas quando está diferente, precisa ser especificado a origem e o destino, existem outra possibilidades, mas vamos explorar apenas o básico. Repare que o campo número são de tipos diferentes, o próprio MapStruct consegue fazer as conversões, é bem útil e ainda é possível especificar a conversão manualmente.
+
+**@InheritInverseConfiguration** faz a configuração inversa da conversão, deve ser utilizado quando existe um mapper com algum tipo de configuração específica.
+
+Os métodos de list sabem utilizar a configuração criada nos métodos anteriores não sendo necessário nenhuma configuração extra.
+
+Veja como fica a classe gerada a partir desta configuração:
+
+```java
+package br.com.cezarcruz.mapstruct.controllers.mappers;
+
+import br.com.cezarcruz.mapstruct.controllers.request.EnderecoRequest;
+import br.com.cezarcruz.mapstruct.controllers.response.EnderecoResponse;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Generated;
+import org.springframework.stereotype.Component;
+
+@Generated(
+   value = "org.mapstruct.ap.MappingProcessor",
+   date = "2020-01-11T12:49:13-0200",
+   comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.4 (AdoptOpenJDK)"
+)
+@Component
+public class EnderecoMapperImpl implements EnderecoMapper {
+
+   @Override
+   public EnderecoResponse de(EnderecoRequest enderecoRequest) {
+       if ( enderecoRequest == null ) {
+           return null;
+       }
+
+       EnderecoResponse enderecoResponse = new EnderecoResponse();
+
+       enderecoResponse.setLogradouro( enderecoRequest.getRua() );
+       if ( enderecoRequest.getNumero() != null ) {
+           enderecoResponse.setNumero( String.valueOf( enderecoRequest.getNumero() ) );
+       }
+       enderecoResponse.setCidade( enderecoRequest.getCidade() );
+
+       return enderecoResponse;
+   }
+
+   @Override
+   public EnderecoRequest de(EnderecoResponse enderecoResponse) {
+       if ( enderecoResponse == null ) {
+           return null;
+       }
+
+       EnderecoRequest enderecoRequest = new EnderecoRequest();
+
+       enderecoRequest.setRua( enderecoResponse.getLogradouro() );
+       if ( enderecoResponse.getNumero() != null ) {
+           enderecoRequest.setNumero( Integer.parseInt( enderecoResponse.getNumero() ) );
+       }
+       enderecoRequest.setCidade( enderecoResponse.getCidade() );
+
+       return enderecoRequest;
+   }
+
+   @Override
+   public List<EnderecoResponse> deRequest(List<EnderecoRequest> enderecoRequests) {
+       if ( enderecoRequests == null ) {
+           return null;
+       }
+
+       List<EnderecoResponse> list = new ArrayList<EnderecoResponse>( enderecoRequests.size() );
+       for ( EnderecoRequest enderecoRequest : enderecoRequests ) {
+           list.add( de( enderecoRequest ) );
+       }
+
+       return list;
+   }
+
+   @Override
+   public List<EnderecoRequest> deResponse(List<EnderecoResponse> enderecoResponses) {
+       if ( enderecoResponses == null ) {
+           return null;
+       }
+
+       List<EnderecoRequest> list = new ArrayList<EnderecoRequest>( enderecoResponses.size() );
+       for ( EnderecoResponse enderecoResponse : enderecoResponses ) {
+           list.add( de( enderecoResponse ) );
+       }
+
+       return list;
+   }
+}
+```
+
+> Observe que ele sabe lidar com valores nulos e incluiu anotações do Spring
+
+Veja como fica o mapper da classe Pessoa
+
+```java
+@Mapper(componentModel = "spring", uses = {
+   EnderecoMapper.class
+})
+public interface PessoaMapper {
+ PessoaResponse de(final PessoaRequest pessoaRequest);
+}
+```
+
+**@Mapper** nessa classe ele foi implementado com um detalhe, o "uses", com isso dizemos ao MapStruct que não deve ser implementado um novo conversor para endereço mas utilizar o que mapper pronto.
+
+Veja como ficou a classe gerada:
+
+```java
+@Generated(
+   value = "org.mapstruct.ap.MappingProcessor",
+   date = "2020-01-11T12:49:13-0200",
+   comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.4 (AdoptOpenJDK)"
+)
+@Component
+public class PessoaMapperImpl implements PessoaMapper {
+
+   @Autowired
+   private EnderecoMapper enderecoMapper;
+
+   @Override
+   public PessoaResponse de(PessoaRequest pessoaRequest) {
+       if ( pessoaRequest == null ) {
+           return null;
+       }
+
+       PessoaResponse pessoaResponse = new PessoaResponse();
+
+       pessoaResponse.setNome( pessoaRequest.getNome() );
+       pessoaResponse.setIdade( pessoaRequest.getIdade() );
+       pessoaResponse.setEnderecos( enderecoMapper.deRequest( pessoaRequest.getEnderecos() ) );
+
+       return pessoaResponse;
+   }
+}
+```
+
+E com nossa conversão pronta basta utilizarmos:
+
+```java
+@Service
+public class ConversorService {
+
+ @Autowired
+ private PessoaMapper pessoaMapper;
+
+ public PessoaResponse converte(final PessoaRequest pessoaRequest) {
+   return pessoaMapper.de(pessoaRequest);
+ }
+}
+```
+
+Pronto.
+
+É possível incluir mais configurações ou fazer alguma implementação para executar antes ou depois de uma conversão, vemos isso em outros posts.
+
+Enquanto isso veja a documentação:
+https://mapstruct.org/documentation/stable/reference/html/
+
+O código completo dete post está em:
+https://github.com/cezarcruz/codigos-do-site/tree/master/map-struct
+
+Qualquer duvida, comente o post.
+
+Até.

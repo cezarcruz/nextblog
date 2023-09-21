@@ -1,0 +1,44 @@
+---
+title: Pegando valores via Url (GET) usando CSharp ou VB.NET
+date: 2013-09-09T18:26:46+00:00
+tags:
+  - NET
+draft: false
+---
+
+Dica rápida pra pegar valores (GET) em urls em ASP .NET:
+
+Temos o seguinte link:
+
+http://exemplo.com/pag.aspx?rel=valor&lang=br
+
+Pra pegar o valor utilizando csharp:
+
+```csharp
+string valor = Request.QueryString["rel"];
+```
+
+Ou:
+
+```csharp
+foreach(string params in Request.QueryString)
+{
+    Response.write(Request.QueryString[params])
+}
+```
+
+Pra pegar o valor utilizando VB.NET:
+
+```vb
+Dim valar As String = Request.QueryString("rel")
+```
+
+Ou:
+
+```vb
+For Each param As String In Request.QueryString()
+    Response.Write(Request.QueryString(param))
+Next
+```
+
+Fácil fácil, até.
