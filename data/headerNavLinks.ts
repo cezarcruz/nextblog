@@ -1,6 +1,4 @@
-type HeaderNavLinks = { href: string; title: string }
-
-const headerNavLinks: HeaderNavLinks[] = [
+const headerNavLinks = [
   { href: '/blog', title: 'Blog' },
   { href: '/tags', title: 'Tags' },
   //{ href: '/projects', title: 'Projects' },
