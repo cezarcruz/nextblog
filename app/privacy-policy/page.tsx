@@ -1,6 +1,3 @@
-import projectsData from '@/data/projectsData'
-import Card from '@/components/Card'
-
 import PageTitle from '@/components/PageTitle'
 import { genPageMetadata } from 'app/seo'
 
