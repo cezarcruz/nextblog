@@ -13,7 +13,7 @@ const siteMetadata = {
   //mastodon: 'https://mastodon.social/@mastodonuser',
   //email: 'address@yoursite.com',
   github: 'https://github.com/cezarcruz',
-  twitter: 'https://twitter.com/cezar',
+  twitter: 'https://twitter.com/cezar_',
   //facebook: 'https://facebook.com',
   //youtube: 'https://youtube.com',
   linkedin: 'https://www.linkedin.com/in/cezar-cruz',
