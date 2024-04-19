@@ -14,13 +14,6 @@ export default function Page() {
     <>
       <AuthorLayout content={mainContent}>
         <MDXLayoutRenderer code={author.body.code} />
-
-        <p>Seja bem vindo ao meu Blog.</p>
-        <p>
-          Meu nome é Cezar e desenvolvo para Web utilizando Java e Javascript, criei esse blog para
-          compartilhar algumas coisas que vou aprendendo.
-        </p>
-        <p>Então, seja bem vindo e aproveite a viagem.</p>
       </AuthorLayout>
     </>
   )
