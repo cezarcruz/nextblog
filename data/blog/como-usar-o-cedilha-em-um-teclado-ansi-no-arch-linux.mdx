@@ -1,0 +1,34 @@
+---
+tags: ['Linux']
+date: 2024-04-19
+title: Como usar o cedilha em um teclado ANSI no Arch Linux
+description: Faça seu cedilha voltar a vida.
+draft: false
+---
+
+Nos últimos tempos uso o Arch Linux como meu sistema principal, isso tem me trazido conhecimentos mais profundos de Linux, tanto para manutenção no dia a dia como entender como o sistema funciona por baixo dos panos. Para o meu dia a dia, gosto de usar o sistema em Inglês, mas os formatos em português do Brasil.
+
+![Region and Language](/static/images/posts/01/region-and-language.png)
+
+Outro ponto é que uso um teclado ANSI, então, para facilitar no dia a dia, uso o padrão US, alt. intl. Porém, isso acaba gerando um problema, o cedilha não funciona como esperado, gerando um carácter diferente: ć.
+
+Para resolver esse problema, existem duas formas:
+
+1. Usar o sistema em Português. Isso resolve o problema, mas como é uma questão de gosto, preciso usar a solução seguinte.
+2. Criar um arquivo ~/.XCompose.
+
+A solução dois consiste em criar um arquivo .XCompose na sua home, com o seguinte conteudo:
+
+```
+# use US compositions by default - don#t forget that, w/o you'll not get any other dead-key behavior
+include "/usr/share/X11/locale/en_US.UTF-8/Compose"
+
+# me devolve meu cedilha
+<dead_acute> <C> : "Ç"
+<dead_acute> <c> : "ç"
+```
+
+Após criar o arquivo, faça logout do sistema. Essa solução funciona apenas se estiver usando uma sessão XOrg.
+
+É isso, até.
+
