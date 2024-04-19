@@ -28,7 +28,7 @@ export default function Projects() {
             style={{ gridTemplateRows: 'auto 1fr' }}
           >
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">
+              <div className="dark:prose-dark prose max-w-none pb-8 pt-10">
                 <p>
                   A sua privacidade é importante para nós. É política do Blog do Cezar respeitar a
                   sua privacidade em relação a qualquer informação sua que possamos coletar no site

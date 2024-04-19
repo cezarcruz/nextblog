@@ -17,6 +17,8 @@ const siteMetadata = {
   //facebook: 'https://facebook.com',
   //youtube: 'https://youtube.com',
   linkedin: 'https://www.linkedin.com/in/cezar-cruz',
+  //threads: 'https://www.threads.net',
+  //instagram: 'https://www.instagram.com',
   locale: 'pt-BR',
   analytics: {
     // If you want to use an analytics provider you have to add it to the
@@ -30,6 +32,9 @@ const siteMetadata = {
     //   plausibleDataDomain: '', // e.g. tailwind-nextjs-starter-blog.vercel.app
     // },
     // simpleAnalytics: {},
+    // posthogAnalytics: {
+    //   posthogProjectApiKey: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
+    // },
     // posthogAnalytics: {
     //   posthogProjectApiKey: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
     // },
