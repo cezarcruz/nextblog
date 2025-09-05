@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
     <div className="w-full max-w-sm mx-auto bg-white rounded-none border-2 border-black p-6 md:p-8 neobrutalism-shadow">
