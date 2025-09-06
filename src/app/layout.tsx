@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: "Minha Página de Links",
@@ -15,6 +16,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className="bg-gray-100 text-black min-h-screen flex items-center justify-center p-4">
         {children}
+        <Analytics />
       </body>
     </html>
   );

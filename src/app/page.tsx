@@ -14,21 +14,18 @@ export default function Home() {
       <div className="flex flex-col space-y-4">
         <a
           href="https://github.com/cezarcruz"
-          target="_blank"
           className="bg-yellow-400 text-black font-bold py-4 px-6 rounded-none text-center border-2 border-black neobrutalism-shadow active:bg-yellow-500"
         >
           GitHub
         </a>
         <a
           href="https://www.linkedin.com/in/cezar-cruz/"
-          target="_blank"
           className="bg-yellow-400 text-black font-bold py-4 px-6 rounded-none text-center border-2 border-black neobrutalism-shadow active:bg-yellow-500"
         >
           LinkedIn
         </a>
         <a
           href="https://www.instagram.com/cezzao1914/"
-          target="_blank"
           className="bg-yellow-400 text-black font-bold py-4 px-6 rounded-none text-center border-2 border-black neobrutalism-shadow active:bg-yellow-500"
         >
           Instagram
