@@ -42,7 +42,7 @@ export default function Home() {
       </div>
 
       <div className="mt-8">
-        <h2 className="text-xl font-bold text-black mb-4 border-b-2 border-black pb-2">Tecnologias</h2>
+        <h2 className="text-xl font-bold text-black mb-4 border-b-2 border-black pb-2 text-center">Tecnologias</h2>
         <div className="flex flex-wrap gap-2">
           <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">Java</span>
           <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">AWS</span>
