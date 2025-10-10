@@ -1,0 +1,11 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" stroke-width="4" stroke="black" fill="none">
+    <title>Coffee Cup Icon</title>
+    <!-- Cup Body -->
+    <path d="M12 24 H 52 V 40 C 52 48 44 52 40 52 H 24 C 20 52 12 48 12 40 Z" fill="white"/>
+    <!-- Handle -->
+    <path d="M52 28 H 58 C 60 28 60 36 58 36 H 52" stroke-linecap="round"/>
+    <!-- Steam 1 -->
+    <path d="M24 16 C 24 10 28 10 28 16" stroke-linecap="round"/>
+    <!-- Steam 2 -->
+    <path d="M36 14 C 36 8 40 8 40 14" stroke-linecap="round"/>
+</svg>
