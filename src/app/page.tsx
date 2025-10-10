@@ -14,19 +14,25 @@ export default function Home() {
       <div className="flex flex-col space-y-4">
         <a
           href="https://github.com/cezarcruz"
-          className="bg-yellow-400 text-black font-bold py-4 px-6 rounded-none text-center border-2 border-black neobrutalism-shadow active:bg-yellow-500"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-yellow-400 text-black font-bold py-4 px-6 rounded-none text-center border-2 border-black neobrutalism-shadow transition-transform duration-150 ease-in-out hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#000] active:bg-yellow-500"
         >
           GitHub
         </a>
         <a
           href="https://www.linkedin.com/in/cezar-cruz/"
-          className="bg-yellow-400 text-black font-bold py-4 px-6 rounded-none text-center border-2 border-black neobrutalism-shadow active:bg-yellow-500"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-yellow-400 text-black font-bold py-4 px-6 rounded-none text-center border-2 border-black neobrutalism-shadow transition-transform duration-150 ease-in-out hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#000] active:bg-yellow-500"
         >
           LinkedIn
         </a>
         <a
           href="https://www.instagram.com/cezzao1914/"
-          className="bg-yellow-400 text-black font-bold py-4 px-6 rounded-none text-center border-2 border-black neobrutalism-shadow active:bg-yellow-500"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-yellow-400 text-black font-bold py-4 px-6 rounded-none text-center border-2 border-black neobrutalism-shadow transition-transform duration-150 ease-in-out hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#000] active:bg-yellow-500"
         >
           Instagram
         </a>
