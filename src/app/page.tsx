@@ -4,11 +4,14 @@ export default function Home() {
       <div className="text-center mb-8">
         <img
           src="https://avatars.githubusercontent.com/u/3604822?s=400&u=afaa0bd96470f6d7f75f96a3c46e09cd6ff80ddc&v=4"
-          alt="Foto de Perfil"
+          alt="Foto de perfil de Cezar Cruz, desenvolvedor de software"
           className="w-32 h-32 rounded-none mx-auto mb-4 border-2 border-black neobrutalism-shadow"
         />
-        <h1 className="text-3xl font-bold text-black mb-1">@cezarcruz</h1>
-        <p className="text-gray-700 text-sm">Desenvolvedor</p>
+        <h1 className="text-3xl font-bold text-black mb-1">Cezar Cruz</h1>
+        <p className="text-gray-700">Desenvolvedor de Software</p>
+        <p className="text-sm text-gray-600 mt-4">
+          Olá! Eu sou Cezar Cruz, um desenvolvedor de software com foco em tecnologias backend como Java e AWS. Bem-vindo à minha página pessoal.
+        </p>
       </div>
 
       <div className="flex flex-col space-y-4">
