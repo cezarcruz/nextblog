@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Cezar Cruz - Desenvolvedor",
@@ -14,8 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className="bg-gray-100 text-black min-h-screen flex items-center justify-center p-4">
-        {children}
+      <body className="bg-gray-100 text-black min-h-screen flex flex-col p-4">
+        <main className="flex-grow flex items-center justify-center">
+          {children}
+        </main>
+        <Footer />
         <Analytics />
       </body>
     </html>
