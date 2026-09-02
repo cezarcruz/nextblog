@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from "./components/Icons";
-import CredlyBadge from "./components/CredlyBadge";
+import Certifications from "./components/Certifications";
 
 export default function Home() {
   return (
@@ -58,7 +58,7 @@ export default function Home() {
       </div>
 
       <div className="mt-8">
-        <h2 className="text-xl font-bold text-black mb-4 border-b-2 border-black pb-2 text-center">
+        <h2 className="text-lg font-black uppercase tracking-wider text-black mb-4 border-b-2 border-black pb-2 text-center">
           Tecnologias
         </h2>
         <div className="flex flex-wrap justify-center gap-2">
@@ -74,14 +74,10 @@ export default function Home() {
       </div>
 
       <div className="mt-8">
-        <h2 className="text-xl font-bold text-black mb-4 border-b-2 border-black pb-2 text-center">
+        <h2 className="text-lg font-black uppercase tracking-wider text-black mb-4 border-b-2 border-black pb-2 text-center">
           Certificações
         </h2>
-        <div className="flex justify-center flex-wrap gap-4">
-          <CredlyBadge badgeId="e20d04c6-939b-4454-8978-ab20bb4a8b70" />
-          <CredlyBadge badgeId="d3c5b139-0139-4376-b203-b83831f53d59" />
-          <CredlyBadge badgeId="011b4270-8a80-47c8-b9fb-3ed42ad20407" />
-        </div>
+        <Certifications />
       </div>
     </div>
   );
