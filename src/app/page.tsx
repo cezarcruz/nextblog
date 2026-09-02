@@ -1,15 +1,22 @@
+import Image from "next/image";
+import { GitHubIcon, LinkedInIcon, InstagramIcon } from "./components/Icons";
+import Certifications from "./components/Certifications";
+
 export default function Home() {
   return (
-    <div className="w-full max-w-sm mx-auto bg-white rounded-none border-2 border-black p-6 md:p-8 neobrutalism-shadow">
+    <div className="w-full max-w-md mx-auto bg-white rounded-none border-2 border-black p-6 md:p-8 neobrutalism-shadow">
       <div className="text-center mb-8">
-        <img
+        <Image
           src="https://avatars.githubusercontent.com/u/3604822?s=400&u=afaa0bd96470f6d7f75f96a3c46e09cd6ff80ddc&v=4"
           alt="Foto de perfil de Cezar Cruz, desenvolvedor de software"
-          className="w-32 h-32 rounded-none mx-auto mb-4 border-2 border-black neobrutalism-shadow"
+          width={128}
+          height={128}
+          priority
+          className="w-32 h-32 rounded-none mx-auto mb-4 border-2 border-black neobrutalism-shadow object-cover"
         />
         <h1 className="text-3xl font-bold text-black mb-1">Cezar Cruz</h1>
         <p className="text-gray-700">Desenvolvedor de Software</p>
-        <p className="text-sm text-gray-600 mt-4">
+        <p className="text-sm text-gray-600 mt-4 leading-relaxed">
           Olá! Eu sou Cezar Cruz, um desenvolvedor de software com foco em tecnologias backend como Java e AWS. Bem-vindo à minha página pessoal.
         </p>
       </div>
@@ -19,38 +26,58 @@ export default function Home() {
           href="https://github.com/cezarcruz"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-yellow-400 text-black font-bold py-4 px-6 rounded-none text-center border-2 border-black neobrutalism-shadow transition-transform duration-150 ease-in-out hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#000] active:bg-yellow-500"
+          className="relative flex items-center justify-center bg-yellow-400 text-black font-bold py-4 px-6 rounded-none text-center border-2 border-black neobrutalism-shadow transition-transform duration-150 ease-in-out hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#000] active:bg-yellow-500"
         >
-          GitHub
+          <span className="absolute left-5 flex items-center justify-center">
+            <GitHubIcon className="w-5 h-5 fill-current" />
+          </span>
+          <span>GitHub</span>
         </a>
         <a
           href="https://www.linkedin.com/in/cezar-cruz/"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-yellow-400 text-black font-bold py-4 px-6 rounded-none text-center border-2 border-black neobrutalism-shadow transition-transform duration-150 ease-in-out hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#000] active:bg-yellow-500"
+          className="relative flex items-center justify-center bg-yellow-400 text-black font-bold py-4 px-6 rounded-none text-center border-2 border-black neobrutalism-shadow transition-transform duration-150 ease-in-out hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#000] active:bg-yellow-500"
         >
-          LinkedIn
+          <span className="absolute left-5 flex items-center justify-center">
+            <LinkedInIcon className="w-5 h-5 fill-current" />
+          </span>
+          <span>LinkedIn</span>
         </a>
         <a
           href="https://www.instagram.com/cezzao1914/"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-yellow-400 text-black font-bold py-4 px-6 rounded-none text-center border-2 border-black neobrutalism-shadow transition-transform duration-150 ease-in-out hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#000] active:bg-yellow-500"
+          className="relative flex items-center justify-center bg-yellow-400 text-black font-bold py-4 px-6 rounded-none text-center border-2 border-black neobrutalism-shadow transition-transform duration-150 ease-in-out hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#000] active:bg-yellow-500"
         >
-          Instagram
+          <span className="absolute left-5 flex items-center justify-center">
+            <InstagramIcon className="w-5 h-5 fill-current" />
+          </span>
+          <span>Instagram</span>
         </a>
       </div>
 
       <div className="mt-8">
-        <h2 className="text-xl font-bold text-black mb-4 border-b-2 border-black pb-2 text-center">Tecnologias</h2>
+        <h2 className="text-lg font-black uppercase tracking-wider text-black mb-4 border-b-2 border-black pb-2 text-center">
+          Tecnologias
+        </h2>
         <div className="flex flex-wrap justify-center gap-2">
           <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">Java</span>
           <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">AWS</span>
+          <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">Kotlin</span>
+          <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">AI</span>
           <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">Linux</span>
           <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">JavaScript</span>
           <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">Docker</span>
           <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">Angular</span>
         </div>
+      </div>
+
+      <div className="mt-8">
+        <h2 className="text-lg font-black uppercase tracking-wider text-black mb-4 border-b-2 border-black pb-2 text-center">
+          Certificações
+        </h2>
+        <Certifications />
       </div>
     </div>
   );
