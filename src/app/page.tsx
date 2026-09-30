@@ -62,14 +62,23 @@ export default function Home() {
           Tecnologias
         </h2>
         <div className="flex flex-wrap justify-center gap-2">
-          <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">Java</span>
-          <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">AWS</span>
-          <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">Kotlin</span>
-          <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">AI</span>
-          <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">Linux</span>
-          <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">JavaScript</span>
-          <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">Docker</span>
-          <span className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow">Angular</span>
+          {[
+            "Java",
+            "AWS",
+            "Kotlin",
+            "AI",
+            "Linux",
+            "JavaScript",
+            "Docker",
+            "Angular",
+          ].map((tech) => (
+            <span
+              key={tech}
+              className="bg-gray-200 text-black font-semibold text-xs py-2 px-3 rounded-none border-2 border-black neobrutalism-shadow transition-transform duration-150 ease-in-out hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#000] cursor-default"
+            >
+              {tech}
+            </span>
+          ))}
         </div>
       </div>
 
