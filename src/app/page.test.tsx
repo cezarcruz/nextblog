@@ -37,4 +37,24 @@ describe('Home Page', () => {
     
     expect(screen.getByRole('heading', { level: 2, name: /certificações/i })).toBeInTheDocument();
   });
+
+  it('renderiza a foto de perfil otimizada pelo next/image', () => {
+    render(<Home />);
+
+    const photo = screen.getByAltText(/foto de perfil de cezar cruz/i);
+    expect(photo.tagName).toBe('IMG');
+    expect(photo).toHaveAttribute('src', expect.stringContaining('avatars.githubusercontent.com'));
+  });
+
+  it('abre os links externos de forma segura em nova aba', () => {
+    render(<Home />);
+
+    const links = screen.getAllByRole('link');
+    expect(links.length).toBeGreaterThanOrEqual(3);
+
+    links.forEach((link) => {
+      expect(link).toHaveAttribute('target', '_blank');
+      expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    });
+  });
 });
