@@ -4,13 +4,20 @@ import Image, { alt, size, contentType } from './opengraph-image';
 
 describe('OpenGraph Image', () => {
   it('expõe as dimensões e o tipo de conteúdo esperados', () => {
-    expect(alt).toBe('Cezar Cruz - Desenvolvedor de Software');
+    expect(alt).toBe(
+      'Cezar Cruz - Desenvolvedor de Software / Software Developer'
+    );
     expect(size).toEqual({ width: 1200, height: 630 });
     expect(contentType).toBe('image/png');
   });
 
   it('gera uma ImageResponse sem lançar erro', async () => {
-    const image = await Image();
+    const image = await Image({ params: Promise.resolve({ lang: 'br' }) });
+    expect(image).toBeInstanceOf(ImageResponse);
+  });
+
+  it('gera a versão em inglês sem lançar erro', async () => {
+    const image = await Image({ params: Promise.resolve({ lang: 'en' }) });
     expect(image).toBeInstanceOf(ImageResponse);
   });
 });

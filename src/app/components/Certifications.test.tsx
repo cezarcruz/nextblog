@@ -1,15 +1,16 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import Certifications from './Certifications';
+import { getDictionary } from '@/i18n/dictionaries';
 
 describe('Certifications Component', () => {
   it('renderiza todas as certificações da lista com seus respectivos títulos e emissores', () => {
-    render(<Certifications />);
+    render(<Certifications dict={getDictionary('br')} />);
 
     expect(screen.getByText('AWS Certified Cloud Practitioner')).toBeInTheDocument();
     expect(screen.getByText('AWS Cloud Quest: Cloud Practitioner')).toBeInTheDocument();
     expect(screen.getByText('Oracle Certified Associate, Java SE 8 Programmer')).toBeInTheDocument();
-    
+
     // Confirma se os emissores aparecem
     const amazonIssuers = screen.getAllByText('Amazon Web Services');
     expect(amazonIssuers.length).toBe(2);
@@ -17,7 +18,7 @@ describe('Certifications Component', () => {
   });
 
   it('possui links válidos direcionando para o Credly', () => {
-    render(<Certifications />);
+    render(<Certifications dict={getDictionary('br')} />);
 
     const links = screen.getAllByRole('link');
     expect(links.length).toBe(3);
@@ -28,5 +29,13 @@ describe('Certifications Component', () => {
       expect(link).toHaveAttribute('rel', 'noopener noreferrer');
     });
   });
-});
 
+  it('traduz o texto de verificação e a descrição dos badges', () => {
+    render(<Certifications dict={getDictionary('en')} />);
+
+    expect(screen.getAllByText('Verify ↗')).toHaveLength(3);
+    expect(
+      screen.getByAltText('Badge for AWS Certified Cloud Practitioner')
+    ).toBeInTheDocument();
+  });
+});

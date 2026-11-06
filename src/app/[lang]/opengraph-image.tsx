@@ -1,13 +1,25 @@
 import { ImageResponse } from "next/og";
+import { isLocale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 
-export const alt = "Cezar Cruz - Desenvolvedor de Software";
+export const alt =
+  "Cezar Cruz - Desenvolvedor de Software / Software Developer";
 export const size = {
   width: 1200,
   height: 630,
 };
 export const contentType = "image/png";
 
-export default async function Image() {
+const TECHNOLOGIES = ["Java", "AWS", "Kotlin", "Docker", "Linux", "Spring Boot"];
+
+export default async function Image({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  const dict = getDictionary(isLocale(lang) ? lang : "br");
+
   return new ImageResponse(
     (
       <div
@@ -78,7 +90,7 @@ export default async function Image() {
               fontWeight: 600,
             }}
           >
-            Desenvolvedor de Software • Java & Cloud AWS
+            {dict.profile.role} • Java & Cloud AWS
           </p>
 
           <div
@@ -89,24 +101,22 @@ export default async function Image() {
               flexWrap: "wrap",
             }}
           >
-            {["Java", "AWS", "Kotlin", "Docker", "Linux", "Spring Boot"].map(
-              (tech) => (
-                <div
-                  key={tech}
-                  style={{
-                    backgroundColor: "#e5e7eb",
-                    color: "#000000",
-                    border: "3px solid #000000",
-                    boxShadow: "4px 4px 0px 0px #000000",
-                    padding: "8px 18px",
-                    fontSize: 20,
-                    fontWeight: 700,
-                  }}
-                >
-                  {tech}
-                </div>
-              )
-            )}
+            {TECHNOLOGIES.map((tech) => (
+              <div
+                key={tech}
+                style={{
+                  backgroundColor: "#e5e7eb",
+                  color: "#000000",
+                  border: "3px solid #000000",
+                  boxShadow: "4px 4px 0px 0px #000000",
+                  padding: "8px 18px",
+                  fontSize: 20,
+                  fontWeight: 700,
+                }}
+              >
+                {tech}
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -116,4 +126,3 @@ export default async function Image() {
     }
   );
 }
-
