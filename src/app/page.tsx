@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from "./components/Icons";
 import Certifications from "./components/Certifications";
+import Experience from "./components/Experience";
 
 export default function Home() {
   return (
@@ -55,6 +56,13 @@ export default function Home() {
           </span>
           <span>Instagram</span>
         </a>
+      </div>
+
+      <div className="mt-8">
+        <h2 className="text-lg font-black uppercase tracking-wider text-black mb-4 border-b-2 border-black pb-2 text-center">
+          Trajetória
+        </h2>
+        <Experience />
       </div>
 
       <div className="mt-8">
