@@ -1,10 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
 import Experience from './Experience';
+import { getDictionary } from '@/i18n/dictionaries';
 
 describe('Experience Component', () => {
   it('renderiza a trajetória em ordem cronológica reversa', () => {
-    render(<Experience />);
+    render(<Experience dict={getDictionary('pt')} />);
 
     const items = within(screen.getByRole('list')).getAllByRole('listitem');
     expect(items).toHaveLength(5);
@@ -13,7 +14,7 @@ describe('Experience Component', () => {
   });
 
   it('destaca o cargo atual com o selo "Atual"', () => {
-    render(<Experience />);
+    render(<Experience dict={getDictionary('pt')} />);
 
     expect(screen.getByText('Atual')).toBeInTheDocument();
     expect(
@@ -22,7 +23,7 @@ describe('Experience Component', () => {
   });
 
   it('exibe as empresas e os períodos de cada experiência', () => {
-    render(<Experience />);
+    render(<Experience dict={getDictionary('pt')} />);
 
     expect(screen.getAllByText('CI&T')).toHaveLength(2);
     expect(screen.getByText('PicPay')).toBeInTheDocument();
@@ -33,11 +34,20 @@ describe('Experience Component', () => {
   });
 
   it('mostra o destaque de impacto do Open Banking', () => {
-    render(<Experience />);
+    render(<Experience dict={getDictionary('pt')} />);
 
     expect(
       screen.getByText(/open banking no maior banco privado do brasil/i)
     ).toBeInTheDocument();
     expect(screen.getByText(/600\+ TPS/i)).toBeInTheDocument();
+  });
+
+  it('renderiza a versão em inglês', () => {
+    render(<Experience dict={getDictionary('en')} />);
+
+    expect(screen.getByText('Current')).toBeInTheDocument();
+    expect(screen.getByText('Nov 2023 – Present')).toBeInTheDocument();
+    expect(screen.getByText('Dec 2014 – Mar 2022')).toBeInTheDocument();
+    expect(screen.getByText(/brazil's largest private bank/i)).toBeInTheDocument();
   });
 });

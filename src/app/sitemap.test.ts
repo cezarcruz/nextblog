@@ -3,13 +3,22 @@ import sitemap from './sitemap';
 import robots from './robots';
 
 describe('SEO & Metadata Routes', () => {
-  it('gera sitemap corretamente com URL base e prioridade', () => {
+  it('gera sitemap com as duas versões de idioma', () => {
     const map = sitemap();
     expect(Array.isArray(map)).toBe(true);
-    expect(map.length).toBeGreaterThan(0);
-    expect(map[0].url).toBe('https://cezarcruz.com.br');
-    expect(map[0].priority).toBe(1);
-    expect(map[0].changeFrequency).toBe('monthly');
+    expect(map).toHaveLength(2);
+
+    expect(map[0].url).toBe('https://cezarcruz.com.br/pt');
+    expect(map[1].url).toBe('https://cezarcruz.com.br/en');
+
+    map.forEach((entry) => {
+      expect(entry.priority).toBe(1);
+      expect(entry.changeFrequency).toBe('monthly');
+      expect(entry.alternates?.languages).toMatchObject({
+        'pt-BR': 'https://cezarcruz.com.br/pt',
+        en: 'https://cezarcruz.com.br/en',
+      });
+    });
   });
 
   it('gera robots.txt permitindo crawling e referenciando o sitemap', () => {
@@ -21,4 +30,3 @@ describe('SEO & Metadata Routes', () => {
     });
   });
 });
-
