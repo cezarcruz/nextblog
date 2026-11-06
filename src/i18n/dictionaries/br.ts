@@ -1,6 +1,6 @@
 import type { Dictionary } from "../types";
 
-const pt: Dictionary = {
+const br: Dictionary = {
   meta: {
     title: "Cezar Cruz - Desenvolvedor de Software",
     description:
@@ -97,8 +97,8 @@ const pt: Dictionary = {
   },
   language: {
     label: "Idioma",
-    pt: "Português",
-    en: "English",
+    br: "BR",
+    en: "EN",
   },
   technologies: [
     "Java",
@@ -112,4 +112,4 @@ const pt: Dictionary = {
   ],
 };
 
-export default pt;
+export default br;

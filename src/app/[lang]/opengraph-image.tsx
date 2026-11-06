@@ -18,7 +18,7 @@ export default async function Image({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-  const dict = getDictionary(isLocale(lang) ? lang : "pt");
+  const dict = getDictionary(isLocale(lang) ? lang : "br");
 
   return new ImageResponse(
     (

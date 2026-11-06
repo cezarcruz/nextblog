@@ -29,7 +29,8 @@ export function detectLocale(acceptLanguage: string | null): Locale {
 
   for (const { tag, quality } of parseAcceptLanguage(acceptLanguage)) {
     if (quality <= 0) continue;
-    if (tag === "pt" || tag.startsWith("pt-")) return "pt";
+    if (tag === "pt" || tag.startsWith("pt-")) return "br";
+    if (tag === "br") return "br";
     if (tag === "en" || tag.startsWith("en-")) return "en";
   }
 

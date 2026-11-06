@@ -40,7 +40,7 @@ export interface Dictionary {
   };
   language: {
     label: string;
-    pt: string;
+    br: string;
     en: string;
   };
   technologies: string[];

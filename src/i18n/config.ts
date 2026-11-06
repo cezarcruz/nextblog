@@ -1,16 +1,21 @@
-export const LOCALES = ["pt", "en"] as const;
+export const LOCALES = ["br", "en"] as const;
 
 export type Locale = (typeof LOCALES)[number];
 
-export const DEFAULT_LOCALE: Locale = "pt";
+export const DEFAULT_LOCALE: Locale = "br";
 
 export const HTML_LANG: Record<Locale, string> = {
-  pt: "pt-BR",
+  br: "pt-BR",
   en: "en",
 };
 
+export const LOCALE_NAMES: Record<Locale, string> = {
+  br: "Português",
+  en: "English",
+};
+
 export const OG_LOCALE: Record<Locale, string> = {
-  pt: "pt_BR",
+  br: "pt_BR",
   en: "en_US",
 };
 

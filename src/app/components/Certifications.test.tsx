@@ -5,7 +5,7 @@ import { getDictionary } from '@/i18n/dictionaries';
 
 describe('Certifications Component', () => {
   it('renderiza todas as certificações da lista com seus respectivos títulos e emissores', () => {
-    render(<Certifications dict={getDictionary('pt')} />);
+    render(<Certifications dict={getDictionary('br')} />);
 
     expect(screen.getByText('AWS Certified Cloud Practitioner')).toBeInTheDocument();
     expect(screen.getByText('AWS Cloud Quest: Cloud Practitioner')).toBeInTheDocument();
@@ -18,7 +18,7 @@ describe('Certifications Component', () => {
   });
 
   it('possui links válidos direcionando para o Credly', () => {
-    render(<Certifications dict={getDictionary('pt')} />);
+    render(<Certifications dict={getDictionary('br')} />);
 
     const links = screen.getAllByRole('link');
     expect(links.length).toBe(3);

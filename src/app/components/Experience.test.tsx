@@ -5,7 +5,7 @@ import { getDictionary } from '@/i18n/dictionaries';
 
 describe('Experience Component', () => {
   it('renderiza a trajetória em ordem cronológica reversa', () => {
-    render(<Experience dict={getDictionary('pt')} />);
+    render(<Experience dict={getDictionary('br')} />);
 
     const items = within(screen.getByRole('list')).getAllByRole('listitem');
     expect(items).toHaveLength(5);
@@ -14,7 +14,7 @@ describe('Experience Component', () => {
   });
 
   it('destaca o cargo atual com o selo "Atual"', () => {
-    render(<Experience dict={getDictionary('pt')} />);
+    render(<Experience dict={getDictionary('br')} />);
 
     expect(screen.getByText('Atual')).toBeInTheDocument();
     expect(
@@ -23,7 +23,7 @@ describe('Experience Component', () => {
   });
 
   it('exibe as empresas e os períodos de cada experiência', () => {
-    render(<Experience dict={getDictionary('pt')} />);
+    render(<Experience dict={getDictionary('br')} />);
 
     expect(screen.getAllByText('CI&T')).toHaveLength(2);
     expect(screen.getByText('PicPay')).toBeInTheDocument();
@@ -34,7 +34,7 @@ describe('Experience Component', () => {
   });
 
   it('mostra o destaque de impacto do Open Banking', () => {
-    render(<Experience dict={getDictionary('pt')} />);
+    render(<Experience dict={getDictionary('br')} />);
 
     expect(
       screen.getByText(/open banking no maior banco privado do brasil/i)

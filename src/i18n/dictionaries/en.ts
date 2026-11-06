@@ -97,8 +97,8 @@ const en: Dictionary = {
   },
   language: {
     label: "Language",
-    pt: "Português",
-    en: "English",
+    br: "BR",
+    en: "EN",
   },
   technologies: [
     "Java",

@@ -2,14 +2,14 @@ import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import Home from './page';
 
-async function renderHome(locale: 'pt' | 'en' = 'pt') {
+async function renderHome(locale: 'br' | 'en' = 'br') {
   const element = await Home({ params: Promise.resolve({ lang: locale }) });
   return render(element);
 }
 
 describe('Home Page', () => {
   it('renderiza o nome principal e o cargo em português', async () => {
-    await renderHome('pt');
+    await renderHome('br');
 
     expect(screen.getByRole('heading', { level: 1, name: /cezar cruz/i })).toBeInTheDocument();
     expect(screen.getByText('Desenvolvedor de Software')).toBeInTheDocument();
@@ -25,7 +25,7 @@ describe('Home Page', () => {
   });
 
   it('renderiza os links das redes sociais com os links corretos', async () => {
-    await renderHome('pt');
+    await renderHome('br');
 
     const githubLink = screen.getByRole('link', { name: /github/i });
     const linkedinLink = screen.getByRole('link', { name: /linkedin/i });
@@ -37,7 +37,7 @@ describe('Home Page', () => {
   });
 
   it('renderiza a lista de tecnologias', async () => {
-    await renderHome('pt');
+    await renderHome('br');
 
     expect(screen.getByRole('heading', { level: 2, name: /tecnologias/i })).toBeInTheDocument();
     expect(screen.getByText('Java')).toBeInTheDocument();
@@ -47,7 +47,7 @@ describe('Home Page', () => {
   });
 
   it('renderiza a seção de trajetória', async () => {
-    await renderHome('pt');
+    await renderHome('br');
 
     expect(screen.getByRole('heading', { level: 2, name: /trajetória/i })).toBeInTheDocument();
     expect(screen.getByText('PicPay')).toBeInTheDocument();
@@ -55,13 +55,13 @@ describe('Home Page', () => {
   });
 
   it('renderiza a seção de certificações', async () => {
-    await renderHome('pt');
+    await renderHome('br');
 
     expect(screen.getByRole('heading', { level: 2, name: /certificações/i })).toBeInTheDocument();
   });
 
   it('renderiza a foto de perfil otimizada pelo next/image', async () => {
-    await renderHome('pt');
+    await renderHome('br');
 
     const photo = screen.getByAltText(/foto de perfil de cezar cruz/i);
     expect(photo.tagName).toBe('IMG');
@@ -69,7 +69,7 @@ describe('Home Page', () => {
   });
 
   it('abre os links externos de forma segura em nova aba', async () => {
-    await renderHome('pt');
+    await renderHome('br');
 
     const links = screen.getAllByRole('link');
     expect(links.length).toBeGreaterThanOrEqual(3);

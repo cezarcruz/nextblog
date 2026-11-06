@@ -10,7 +10,7 @@ vi.mock('next/font/google', () => ({
 
 import RootLayout, { generateMetadata } from './layout';
 
-async function renderLayout(locale: 'pt' | 'en' = 'pt') {
+async function renderLayout(locale: 'br' | 'en' = 'br') {
   const element = await RootLayout({
     children: <p>conteúdo de teste</p>,
     params: Promise.resolve({ lang: locale }),
@@ -22,7 +22,7 @@ async function renderLayout(locale: 'pt' | 'en' = 'pt') {
 describe('RootLayout', () => {
   it('expõe os metadados essenciais de SEO em português', async () => {
     const metadata = await generateMetadata({
-      params: Promise.resolve({ lang: 'pt' }),
+      params: Promise.resolve({ lang: 'br' }),
     });
 
     expect(metadata.metadataBase?.toString()).toBe('https://cezarcruz.com.br/');
@@ -32,11 +32,11 @@ describe('RootLayout', () => {
     });
     expect(metadata.description).toContain('Cezar Cruz');
     expect(metadata.alternates).toMatchObject({
-      canonical: '/pt',
+      canonical: '/br',
       languages: {
-        'pt-BR': '/pt',
+        'pt-BR': '/br',
         en: '/en',
-        'x-default': '/pt',
+        'x-default': '/br',
       },
     });
     expect(metadata.robots).toMatchObject({
@@ -62,11 +62,11 @@ describe('RootLayout', () => {
 
   it('mantém o contrato de compartilhamento (OpenGraph e Twitter)', async () => {
     const metadata = await generateMetadata({
-      params: Promise.resolve({ lang: 'pt' }),
+      params: Promise.resolve({ lang: 'br' }),
     });
 
     expect(metadata.openGraph).toMatchObject({
-      url: 'https://cezarcruz.com.br/pt',
+      url: 'https://cezarcruz.com.br/br',
       siteName: 'Cezar Cruz',
       locale: 'pt_BR',
       type: 'website',
@@ -77,7 +77,7 @@ describe('RootLayout', () => {
   });
 
   it('renderiza no idioma correto com o conteúdo e o rodapé', async () => {
-    await renderLayout('pt');
+    await renderLayout('br');
 
     expect(document.documentElement.lang).toBe('pt-BR');
     expect(screen.getByText('conteúdo de teste')).toBeInTheDocument();
@@ -92,7 +92,7 @@ describe('RootLayout', () => {
   });
 
   it('injeta o JSON-LD válido do schema Person', async () => {
-    const { container } = await renderLayout('pt');
+    const { container } = await renderLayout('br');
 
     const script = container.querySelector('script[type="application/ld+json"]');
     expect(script).not.toBeNull();

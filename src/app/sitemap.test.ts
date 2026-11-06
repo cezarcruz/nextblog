@@ -8,14 +8,14 @@ describe('SEO & Metadata Routes', () => {
     expect(Array.isArray(map)).toBe(true);
     expect(map).toHaveLength(2);
 
-    expect(map[0].url).toBe('https://cezarcruz.com.br/pt');
+    expect(map[0].url).toBe('https://cezarcruz.com.br/br');
     expect(map[1].url).toBe('https://cezarcruz.com.br/en');
 
     map.forEach((entry) => {
       expect(entry.priority).toBe(1);
       expect(entry.changeFrequency).toBe('monthly');
       expect(entry.alternates?.languages).toMatchObject({
-        'pt-BR': 'https://cezarcruz.com.br/pt',
+        'pt-BR': 'https://cezarcruz.com.br/br',
         en: 'https://cezarcruz.com.br/en',
       });
     });

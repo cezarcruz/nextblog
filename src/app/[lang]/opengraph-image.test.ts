@@ -12,7 +12,7 @@ describe('OpenGraph Image', () => {
   });
 
   it('gera uma ImageResponse sem lançar erro', async () => {
-    const image = await Image({ params: Promise.resolve({ lang: 'pt' }) });
+    const image = await Image({ params: Promise.resolve({ lang: 'br' }) });
     expect(image).toBeInstanceOf(ImageResponse);
   });
 

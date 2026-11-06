@@ -5,7 +5,7 @@ import { getDictionary } from '@/i18n/dictionaries';
 
 describe('Footer Component', () => {
   it('renderiza o copyright com o ano atual e o nome', () => {
-    render(<Footer dict={getDictionary('pt')} />);
+    render(<Footer dict={getDictionary('br')} />);
     const currentYear = new Date().getFullYear().toString();
 
     expect(screen.getByText(new RegExp(`${currentYear}.*Cezar Cruz`))).toBeInTheDocument();
