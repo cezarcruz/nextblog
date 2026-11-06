@@ -18,7 +18,7 @@ export default function Home() {
         <h1 className="text-3xl font-bold text-black mb-1">Cezar Cruz</h1>
         <p className="text-gray-700">Desenvolvedor de Software</p>
         <p className="text-sm text-gray-600 mt-4 leading-relaxed">
-          Olá! Eu sou Cezar Cruz, um desenvolvedor de software com foco em tecnologias backend como Java e AWS. Bem-vindo à minha página pessoal.
+          Olá! Eu sou o Cezar, um desenvolvedor de software com foco em tecnologias backend como Java e AWS. Bem-vindo à minha página pessoal.
         </p>
       </div>
 
@@ -99,4 +99,3 @@ export default function Home() {
     </div>
   );
 }
-
