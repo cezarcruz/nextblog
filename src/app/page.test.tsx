@@ -32,6 +32,14 @@ describe('Home Page', () => {
     expect(screen.getByText('Docker')).toBeInTheDocument();
   });
 
+  it('renderiza a seção de trajetória', () => {
+    render(<Home />);
+
+    expect(screen.getByRole('heading', { level: 2, name: /trajetória/i })).toBeInTheDocument();
+    expect(screen.getByText('PicPay')).toBeInTheDocument();
+    expect(screen.getByText('Nubank')).toBeInTheDocument();
+  });
+
   it('renderiza a seção de certificações', () => {
     render(<Home />);
     

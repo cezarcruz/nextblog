@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from "./components/Icons";
 import Certifications from "./components/Certifications";
+import Experience from "./components/Experience";
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
         <h1 className="text-3xl font-bold text-black mb-1">Cezar Cruz</h1>
         <p className="text-gray-700">Desenvolvedor de Software</p>
         <p className="text-sm text-gray-600 mt-4 leading-relaxed">
-          Olá! Eu sou Cezar Cruz, um desenvolvedor de software com foco em tecnologias backend como Java e AWS. Bem-vindo à minha página pessoal.
+          Olá! Eu sou o Cezar, um desenvolvedor de software com foco em tecnologias backend como Java e AWS. Bem-vindo à minha página pessoal.
         </p>
       </div>
 
@@ -59,6 +60,13 @@ export default function Home() {
 
       <div className="mt-8">
         <h2 className="text-lg font-black uppercase tracking-wider text-black mb-4 border-b-2 border-black pb-2 text-center">
+          Trajetória
+        </h2>
+        <Experience />
+      </div>
+
+      <div className="mt-8">
+        <h2 className="text-lg font-black uppercase tracking-wider text-black mb-4 border-b-2 border-black pb-2 text-center">
           Tecnologias
         </h2>
         <div className="flex flex-wrap justify-center gap-2">
@@ -91,4 +99,3 @@ export default function Home() {
     </div>
   );
 }
-
